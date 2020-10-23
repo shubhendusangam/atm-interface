@@ -15,11 +15,20 @@ public class Transaction {
       this.memo = "";
    }
 
-   public Transaction(double amount, Account inAccount, String memo) {
+   public Transaction(double amount, String memo, Account inAccount) {
       // call the two-arg constructor first
       this(amount, inAccount);
 
       //set the memo
       this.memo = memo;
+   }
+
+   public double getAmount() {
+      return amount;
+   }
+
+   public String getSummaryLine() {
+      if(amount > 0) return String.format("%s : $(%.02f) : %s", this.timeStamp.toString(), this.amount, this.memo);
+      else return String.format("%s : $(%.02f) : %s", this.timeStamp.toString(), -this.amount, this.memo);
    }
 }
